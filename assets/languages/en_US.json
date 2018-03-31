@@ -73,7 +73,7 @@
   "Navigation": {
     "nav_dashboard": "Dashboard",
     "nav_trade_history": "Trade History",
-    "nav_close" : "Close",
+    "nav_close": "Close",
     "nav_debug": "Debug",
     "nav_settings": "Settings",
     "nav_logout": "Log Out"
@@ -119,7 +119,6 @@
     "portfolio_send_tx": "Send Transaction",
     "portfolio_tx_did_not_complete": "Transaction did not complete. Please try again.",
     "portfolio_toastr_title_tx_info": "Transaction Info"
-
   },
   "Inventory": {
     "inventory_tab_inventory": "Inventory",
@@ -156,7 +155,7 @@
     "exchange_btn_portfolio": "PORTFOLIO",
     "exchange_lbl_one_max": "Max",
     "exchange_lbl_one_min": "Min",
-    "exchange_lbl_one_price_to":  "Price to",
+    "exchange_lbl_one_price_to": "Price to",
     "exchange_lbl_buy_small": "Buy",
     "exchange_lbl_sell_small": "Sell",
     "exchange_trade_with_selected_trader": "Trade with selected trader only (optional)",
@@ -169,6 +168,7 @@
     "exchange_lbl_amount_to": "Amount to",
     "exchange_dont_auto_repeat_order": "Limit price order - Immediate",
     "exchange_enable_auto_repeat_this_trade": "Limit price order - Good 'til canceled",
+    "exchange_enable_fomo_dump": "Market price order",
     "exchange_enable_auto_repeat_coinmarketcap": "Enable auto-price market maker mode",
     "exchange_itll_cost_you": "Total Cost",
     "exchange_set_small": "Ask",
@@ -409,12 +409,3 @@
     "settings_charts_desc": "Trading charts settings update will take affect next time you get back to Exchange screen. (Doesn't require app restart)"
   }
 }
-
-
-
-
-
-
-
-
-

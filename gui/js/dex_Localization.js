@@ -100,6 +100,7 @@ function PopulateDefaultLanguage() {
 	$('.language[data-langstr="exchange_lbl_amount_to"]').text(default_lang.Exchange.exchange_lbl_amount_to);
 
 	$('.language[data-langstr="exchange_dont_auto_repeat_order"]').text(default_lang.Exchange.exchange_dont_auto_repeat_order);
+	$('.language[data-langstr="exchange_enable_fomo_dump"]').text(default_lang.Exchange.exchange_enable_fomo_dump);
 	$('.language[data-langstr="exchange_enable_auto_repeat_this_trade"]').text(default_lang.Exchange.exchange_enable_auto_repeat_this_trade);
 	$('.language[data-langstr="exchange_enable_auto_repeat_coinmarketcap"]').text(default_lang.Exchange.exchange_enable_auto_repeat_coinmarketcap);
 
