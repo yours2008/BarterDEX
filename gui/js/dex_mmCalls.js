@@ -38,20 +38,19 @@ function mm_sell(selling_data) {
 		default:
 			break;
 	}
-	console.log('sell output: ' + ajax_data);
 	console.log('sell output: ' + JSON.stringify(ajax_data));
 	/*** POST sell to mm ***/
-	$.ajax({
-		data: JSON.stringify(ajax_data)
-	}).done(function (mm_sell_output_data) {
-		/*** We get a reply from mm ***/
-		if (!mm_sell_output_data.error === false) { /*** Our sell attempt failed ***/
-			console.error('sell failed return: ' + JSON.stringify(mm_sell_output_data))
-		} else if (mm_sell_output_data.result == 'success') { /*** Our sell offer is posted ***/
-			var default_lang = JSON.parse(sessionStorage.getItem('mm_default_lang'));
-			console.log('sell success return: ' + JSON.stringify(mm_sell_output_data))
-		}
-	}).fail(function (jqXHR, textStatus, errorThrown) { console.error(textStatus + ': ' + errorThrown); }); /*** Our whole mm call failed ***/
+	//	$.ajax({
+	//		data: JSON.stringify(ajax_data)
+	//	}).done(function (mm_sell_output_data) {
+	//		/*** We get a reply from mm ***/
+	//		if (!mm_sell_output_data.error === false) { /*** Our sell attempt failed ***/
+	//			console.error('sell failed return: ' + JSON.stringify(mm_sell_output_data))
+	//		} else if (mm_sell_output_data.result == 'success') { /*** Our sell offer is posted ***/
+	//			var default_lang = JSON.parse(sessionStorage.getItem('mm_default_lang'));
+	//			console.log('sell success return: ' + JSON.stringify(mm_sell_output_data))
+	//		}
+	//	}).fail(function (jqXHR, textStatus, errorThrown) { console.error(textStatus + ': ' + errorThrown); }); /*** Our whole mm call failed ***/
 
 }
 

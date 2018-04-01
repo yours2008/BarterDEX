@@ -2194,22 +2194,27 @@ function manual_buy_sell(mt_data) {
 	//console.log(coin);
 
 	var buying_or_selling = $('input[name=trading_pair_options]:checked').val();
-
-	/*if(buying_or_selling == 'buying') {
-		var base_coin = coin;
-		var rel_coin = $('.trading_pair_coin').selectpicker('val');
-	}
-	if(buying_or_selling == 'selling') {
-		var base_coin = $('.trading_pair_coin').selectpicker('val');
-		var rel_coin = coin;
-	}*/
-
+	console.log('BUYING or SELLING??: ' + buying_or_selling);
 	var base_coin = coin;
 	var rel_coin = $('.trading_pair_coin').selectpicker('val');
 
-	console.log('BUYING or SELLING??: ' + buying_or_selling);
 	console.log('BASE: ' + base_coin);
 	console.log('REL: ' + rel_coin);
+
+	if (buying_or_selling == 'buying') {
+		if (buy_type == 'fomo') {
+
+			return;
+		}
+	}
+	if (buying_or_selling == 'selling') {
+		if (sell_type == 'dump') {
+			var mm_selling_data = { "base": base_coin, "rel": rel_coin, "sell_type": "dump", "vol": mt_data.volume};
+			mm_sell(mm_selling_data);
+			return;
+		}
+	}
+
 
 	var userpass = sessionStorage.getItem('mm_userpass');
 	var mypubkey = sessionStorage.getItem('mm_mypubkey');
