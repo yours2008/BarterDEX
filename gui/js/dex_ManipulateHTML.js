@@ -51,6 +51,8 @@ $(document).ready(function () {
 			default:
 				$('#buy_sell_coin_div').show();
 				$('#exchange_lbls').show();
+				sell_type = "other",
+					buy_type = "other;"
 				break;
 		}
 	});
