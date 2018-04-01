@@ -44,6 +44,8 @@ $(document).ready(function () {
 			case "trading_fomo_dump":
 				$('#buy_sell_coin_div').hide();
 				$('#exchange_lbls').hide();
+				sell_type = "dump",
+					buy_type = "fomo;"
 				break;
 
 			default:

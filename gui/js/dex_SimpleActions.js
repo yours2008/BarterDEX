@@ -1,14 +1,16 @@
 /*** Simple GUI JS ***/
-
-var CheckOrderbook_Interval = null;
-var CheckPortfolio_Interval = null;
-var check_coin_balance_Interval = null;
-var check_swap_status_Interval = null;
-var check_my_prices_Interval = null;
-var check_bot_list_Interval = null;
-var bot_screen_coin_balance_Interval = null;
-var bot_screen_sellcoin_balance_Interval = null;
-var shell = require('electron').shell;
+/*** Set some global vars ***/
+var CheckOrderbook_Interval = null,
+	CheckPortfolio_Interval = null,
+	check_coin_balance_Interval = null,
+	check_swap_status_Interval = null,
+	check_my_prices_Interval = null,
+	check_bot_list_Interval = null,
+	bot_screen_coin_balance_Interval = null,
+	bot_screen_sellcoin_balance_Interval = null,
+	shell = require('electron').shell,
+	sell_type = null,
+	buy_type = null;
 
 $(window).resize(function () {
 	$('.loginbody').css('height', $(window).height());
