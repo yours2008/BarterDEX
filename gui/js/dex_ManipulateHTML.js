@@ -28,9 +28,7 @@ $(document).ready(function () {
 
 			break;
 		case "win32":
-			/* CMC pricing isn't working in win, so we remove it from view */
-			document.getElementById("cmcRadio").remove();
-			document.getElementById("cmcHelpBtn").remove();
+
 			break;
 	}
 	/* End OS Changes */
@@ -44,10 +42,13 @@ $(document).ready(function () {
 		var RadValue = $(this).attr("value");
 		switch (RadValue) {
 			case "trading_fomo_dump":
-				//document.getElementById("fomoHelpBtn").remove();
+				$('#buy_sell_coin_div').hide();
+				$('#exchange_lbls').hide();
 				break;
 
 			default:
+				$('#buy_sell_coin_div').show();
+				$('#exchange_lbls').show();
 				break;
 		}
 	});

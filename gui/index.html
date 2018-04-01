@@ -612,14 +612,14 @@
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group" Id="exchange_lbls">
                                                     <span style="float: left; font-size: 18px;">
                                                         <span class="trading_pair_lable_text_one language" data-langstr="exchange_lbl_one_max"></span>
                                                         <span class="language" data-langstr="exchange_lbl_one_price_to"></span>
                                                         <span class="trading_pair_lable_text_two language" data-langstr="exchange_lbl_buy_small"></span>
                                                     </span>
                                                 </div>
-                                                <div class="input-group col-sm-12">
+                                                <div class="input-group col-sm-12" Id="buy_sell_coin_div">
                                                     <select class="selectpicker trading_pair_coin" data-live-search="true" data-hide-disabled="true" data-width="30%"></select>
                                                     <span class="input-group-addon trading_pair_coin_autoprice_mode_span" style="font-size: 0px; margin: 0; padding: 0; width: 120px; background-color: #fff; border: 0;">
                                                         <div class="checkbox" style="margin: 0;">
@@ -645,17 +645,17 @@
                                                         style="height: 44px; font-size: 20px;">
                                                 </div>
 
-                                                <div class="form-group buy_sell_amount_to" style="margin-top: 15px; margin-bottom: 0px;">
+                                                <div class="form-group buy_sell_amount_to" style="margin-top: 15px; margin-bottom: 0px;" Id="buy_sell_amount_div">
                                                     <span style="font-size: 18px;">
                                                         <span class="language" data-langstr="exchange_lbl_two_max"></span>
                                                         <span class="language" data-langstr="exchange_lbl_amount_to"></span>
                                                         <span class="trading_pair_lable_text_two language" data-langstr="exchange_lbl_buy_small"></span>
                                                     </span>
                                                 </div>
-                                                <div class="input-group col-sm-12">
+                                                <div class="input-group col-sm-12" Id="buy_sell_label_div">
                                                     <p class="portfolio_info_text" style="font-size: 120%; font-weight: 200;"></p>
                                                 </div>
-                                                <div class="input-group col-sm-12 buy_sell_button_div">
+                                                <div class="input-group col-sm-12 buy_sell_button_div" Id="buy_sell_button_div">
                                                     <!--<span class="input-group-addon coin_ticker" id="trading_pair_coin_ticker" style="font-size: 20px;"></span>-->
                                                     <select class="selectpicker trading_pair_coin2" data-live-search="true" data-hide-disabled="true" data-width="30%"></select>
                                                     <input type="number" class="form-control trading_pair_coin_volume" data-langstr="exchange_trading_pair_coin_volume_input_placeholder"
@@ -1176,11 +1176,11 @@
     <script src="js/dex_Localization.js"></script>
     <script src="js/dex_Help.js"></script>
 
-    <script src="js/dex_ManipulateHTML.js"></script>
-    <script src="js/electrum_list.js"></script>
+   <script src="js/electrum_list.js"></script>
     <script src="js/dex_SimpleActions.js"></script>
     <script src="js/dex_mmCalls.js"></script>
     <script src="js/dex_ComplexActions.js"></script>
+     <script src="js/dex_ManipulateHTML.js"></script>
     <script src="js/dex_RemoteAlerts.js"></script>
 </body>
 
