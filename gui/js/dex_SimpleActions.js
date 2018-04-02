@@ -474,7 +474,7 @@ function check_coin_balance(chk_coin_data) {
 
 	var coin_name = return_coin_details(coin).name;
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "getcoin", "coin": coin };
 	var url = "http://127.0.0.1:7783";
 
@@ -553,7 +553,7 @@ function check_coin_balance(chk_coin_data) {
 
 function get_coin_info(coin) {
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "getcoin", "coin": coin };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -597,7 +597,7 @@ function get_coin_info(coin) {
 
 function get_coin_info_spv_inv(coin_data) {
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "balance", "coin": coin_data.coin, "address": coin_data.addr };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -642,7 +642,7 @@ function get_coin_info_spv_inv(coin_data) {
 function get_coins() {
 	//console.log(data);
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "getcoins" };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -709,7 +709,7 @@ function enable_disable_coin(enable_disable_coin_data) {
 	console.warn('enable disable', enable_disable_coin_data);
 
 	var electrum_option = enable_disable_coin_data.electrum //If 'false', electrum option selected
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var url = "http://127.0.0.1:7783";
 
 	if (enable_disable_coin_data.method === 'disable') {
@@ -903,8 +903,7 @@ function enable_disable_coin(enable_disable_coin_data) {
 function check_coin_inventory(coin) {
 	console.log(coin);
 
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "inventory", "coin": coin };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -977,8 +976,7 @@ function check_coin_inventory(coin) {
 function check_coin_listunspent(coin_listunspent_data) {
 	console.log(coin_listunspent_data);
 
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "listunspent", "coin": coin_listunspent_data.coin, "address": coin_listunspent_data.addr };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -1261,7 +1259,7 @@ function make_inventory_withdraw(mk_inv_data) {
 	//console.log(data);
 	coin = mk_inv_data.coin;
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "withdraw", "coin": mk_inv_data.coin, "outputs": mk_inv_data.outputs };
 	var url = "http://127.0.0.1:7783";
 
@@ -1326,8 +1324,7 @@ function mk_inv_sendrawtx(mk_inv_rawtx_data, mk_inv_rawtx_coin) {
 
 	if (mk_inv_rawtx_data.hasOwnProperty('withdraw')) { console.log(mk_inv_rawtx_data.withdraw.hex); }
 
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "sendrawtransaction", "coin": mk_inv_rawtx_coin, "signedtx": (mk_inv_rawtx_data.hasOwnProperty('withdraw') ? mk_inv_rawtx_data.withdraw.hex : mk_inv_rawtx_data.hex) };
 	var url = "http://127.0.0.1:7783";
 
@@ -1373,7 +1370,7 @@ function addcoin_enable_disable_coin(data) {
 	//console.log(data.coin);
 	//console.log(data.status);
 	var electrum_option = $('.toggle_checkbox[data-coin="' + data.coin + '"]').prop('checked'); //If 'false', electrum option selected
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 
 
 	if (data.coin !== ' ') {
@@ -1446,8 +1443,7 @@ function addcoin_enable_disable_coin(data) {
 
 function get_coins_list() {
 
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 
 	var ajax_data = { "userpass": userpass, "method": "getcoins" };
 	console.log(ajax_data)
@@ -1651,8 +1647,7 @@ function CheckPortfolioFn(sig) {
 		console.log('checking portfolio');
 	}
 
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 
 	var ajax_data = { "userpass": userpass, "method": "portfolio" };
 	console.log(ajax_data)
@@ -1887,7 +1882,7 @@ $('.portfolio_set_price_btn').click(function () {
 	console.log('base ' + base_coin);
 	console.log('rel ' + rel_coin);
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "setprice", "base": base_coin, "rel": rel_coin, "price": price };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -1919,7 +1914,7 @@ $('.portfolio_set_autoprice_btn').click(function () {
 	console.log('base ' + base_coin);
 	console.log('rel ' + rel_coin);
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "autoprice", "base": base_coin, "rel": rel_coin, "margin": margin };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -1949,7 +1944,7 @@ function set_coin_goal(goal_data) {
 	//console.log('GOAL PERCENTAGE: ' + goal_data.percent);
 	//console.log('GOAL COIN: '+ goal_data.coin);
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	if (goal_data.auto == false) {
 		var ajax_data = { "userpass": userpass, "method": "goal", "coin": goal_data.coin, "val": goal_data.percent };
 	} else {
@@ -2116,8 +2111,7 @@ function autoprice_buy_sell(autoprice_data) {
 	console.log('BASE: ' + base_coin);
 	console.log('REL: ' + rel_coin);
 
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 
 	if (autoprice_data.mode == 'margin') {
 		var ajax_data = { "userpass": userpass, "method": "autoprice", "base": base_coin, "rel": rel_coin, "margin": autoprice_data.modeval };
@@ -2209,15 +2203,14 @@ function manual_buy_sell(mt_data) {
 	}
 	if (buying_or_selling == 'selling') {
 		if (sell_type == 'dump') {
-			var mm_selling_data = { "base": base_coin, "rel": rel_coin, "sell_type": "dump", "vol": mt_data.volume};
+			var mm_selling_data = { "base": base_coin, "rel": rel_coin, "sell_type": "dump", "vol": mt_data.volume };
 			mm_sell(mm_selling_data);
 			return;
 		}
 	}
 
 
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 
 	if (mt_data.action == 'buy') {
 		if (mt_data.trading_options == 'autorepeat') {
@@ -2374,7 +2367,7 @@ function DepositOnError(deposit_data) {
 		var coin_name = return_coin_details(deposit_data.coin).name;
 	}
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "getcoin", "coin": deposit_data.coin };
 	var url = "http://127.0.0.1:7783";
 
@@ -2594,8 +2587,7 @@ function CheckOrderBookFn(sig) {
 		var rel_coin = $('.trading_pair_coin').selectpicker('val');
 	}
 
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 
 	$('.orderbook_rel_coin').html(rel_coin);
 	$('.orderbook_base_coin').html(base_coin);
@@ -2759,7 +2751,7 @@ function check_my_prices(sig) {
 		var rel_coin = coin;
 	}
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	//var ajax_data = {"userpass":userpass,"method":"myprice","base":base_coin,"rel":rel_coin};
 	var ajax_data = { "userpass": userpass, "method": "myprices" };
 	console.log(ajax_data)
@@ -2840,7 +2832,7 @@ function check_my_prices(sig) {
 function cancel_my_prices(cancel_data) {
 	console.log(cancel_data);
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "setprice", "base": cancel_data.base, "rel": cancel_data.rel, "price": 0, "broadcast": 1 };
 	console.log(ajax_data)
 	var url = "http://127.0.0.1:7783";
@@ -3046,7 +3038,7 @@ function coinBalanceReceiveAddr(coin) {
 
 	var coin_name = return_coin_details(coin).name;
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "getcoin", "coin": coin };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -3107,7 +3099,7 @@ function coinBalanceReceiveAddr(coin) {
 function coinBalanceSendFn(coin) {
 	var tx_coin = coin;
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var ajax_data0 = { "userpass": userpass, "method": "getcoin", "coin": tx_coin };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -3440,7 +3432,7 @@ function create_sendtx(coin, tx_data) {
 
 	console.log(tx_data);
 
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 
 	if (return_coin_details(coin).eth == true) {
 		var ajax_data = { "userpass": userpass, "method": "eth_withdraw", "coin": coin, "to": tx_data.to_addr, "amount": tx_data.send_amount }
@@ -3506,8 +3498,7 @@ function update_min_max_price_input() {
 		var rel_coin = coin;
 	}
 
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 
 	$('.orderbook_rel_coin').html(rel_coin);
 	$('.orderbook_base_coin').html(base_coin);
@@ -3565,8 +3556,7 @@ function check_bot_list(sig) {
 	var coin = $('.trading_pair_coin2').selectpicker('val', coin);
 	//console.log(coin);
 
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "bot_statuslist" };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -3698,7 +3688,7 @@ function buy_sell_precheck(bot_data) {
 	if (base_coin == 'BTC' || rel_coin == 'BTC') {
 		console.log("BTC found in trading pair. Confirming BTC tx fee before proceeding.");
 
-		var userpass = sessionStorage.getItem('mm_userpass');
+		Get_mm_creds();
 		var ajax_data0 = { "userpass": userpass, "method": "getcoin", "coin": 'BTC' };
 		var url = "http://127.0.0.1:7783";
 		var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -3788,8 +3778,7 @@ function bot_buy_sell(bot_data) {
 	console.log('BASE: ' + base_coin);
 	console.log('REL: ' + rel_coin);
 
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 
 	if (bot_data.action == 'buy') {
 		var ajax_data = { "userpass": userpass, "method": "bot_buy", "base": base_coin, "rel": rel_coin, "maxprice": bot_data.price, "relvolume": bot_data.volume };
@@ -3869,10 +3858,7 @@ function bot_sendrawtx(bot_sendrawtx_data) {
 	var coin = bot_sendrawtx_data.coin;
 	console.log(coin);
 
-
-
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "sendrawtransaction", "coin": coin, "signedtx": (bot_sendrawtx_data.hasOwnProperty('withdraw') ? bot_sendrawtx_data.withdraw.hex : bot_sendrawtx_data.hex) };
 	var url = "http://127.0.0.1:7783";
 
@@ -3920,8 +3906,7 @@ function bot_sendrawtx(bot_sendrawtx_data) {
 
 function bot_stop_pause_resume(bot_data) {
 	console.log(bot_data);
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 
 	if (bot_data.action == 'pause') {
 		var ajax_data = { "userpass": userpass, "method": "bot_pause", "botid": bot_data.botid };
@@ -3965,9 +3950,7 @@ function bot_stop_pause_resume(bot_data) {
 
 function bot_settings(bot_data) {
 	console.log(bot_data);
-
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "bot_settings", "botid": bot_data.botid, "newprice": bot_data.newprice, "newvolume": bot_data.newvolume };
 
 	console.log(ajax_data);
@@ -4003,9 +3986,7 @@ function bot_settings(bot_data) {
 
 function bot_status(bot_data) {
 	console.log(bot_data);
-
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "bot_status", "botid": bot_data.botid };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -4337,8 +4318,7 @@ function bot_screen_sellcoin_balance(sig) {
 	console.log('trading_pair_coin is: ' + coin);
 
 	var coin_name = return_coin_details(coin).name;
-
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "getcoin", "coin": coin };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -4449,8 +4429,7 @@ function bot_screen_coin_balance(sig) {
 	console.log(coin);
 
 	var coin_name = return_coin_details(coin).name;
-
-	var userpass = sessionStorage.getItem('mm_userpass');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "getcoin", "coin": coin };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -4544,8 +4523,7 @@ function bot_screen_coin_balance(sig) {
 function electrum_coin_balance(coin_balance_data) {
 	console.log(coin_balance_data);
 
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "balance", "coin": coin_balance_data.coin, "address": coin_balance_data.smartaddress };
 	var url = "http://127.0.0.1:7783/";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -4622,8 +4600,7 @@ function check_swap_status_details(swap_status_data) {
 
 	var requestid = swap_status_data.requestid;
 	var quoteid = swap_status_data.quoteid;
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "swapstatus", "requestid": requestid, "quoteid": quoteid };
 	var url = "http://127.0.0.1:7783/";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -4999,8 +4976,7 @@ function check_swap_status(sig) {
 	var coin = $('.trading_pair_coin2').selectpicker('val', coin);
 	//console.log(coin);
 
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "swapstatus", "pending": 0, "fast": 1, "limit": 30 };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
@@ -5217,8 +5193,7 @@ function formatValue(formatValue) {
 }
 
 function constructTradesHistory() {
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "swapstatus" };
 	//var ajax_data = {"userpass":userpass,"method":"recentswaps","limit":100};
 	var url = "http://127.0.0.1:7783";
@@ -5445,8 +5420,7 @@ function constructTradesHistory() {
 /* ZEROCONF SETTINGS */
 
 function ZeroConfDeposit(deposit_weeks, deposit_amount) {
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "instantdex_deposit", "weeks": deposit_weeks, "amount": deposit_amount, "broadcast": 1 };
 	var url = "http://127.0.0.1:7783";
 	console.log(ajax_data);
@@ -5500,8 +5474,7 @@ function ZeroConfDeposit(deposit_weeks, deposit_amount) {
 }
 
 function ZeroConfClaim() {
-	var userpass = sessionStorage.getItem('mm_userpass');
-	var mypubkey = sessionStorage.getItem('mm_mypubkey');
+	Get_mm_creds();
 	var ajax_data = { "userpass": userpass, "method": "instantdex_claim" };
 	var url = "http://127.0.0.1:7783";
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]

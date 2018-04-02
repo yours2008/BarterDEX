@@ -1,9 +1,9 @@
 /*** AJAX calls to marketmaker ***/
 
 /*** Global Variables ***/
-var mm_url = "http://127.0.0.1:7783";
-var userpass = null;
-var mypubkey = null;
+var mm_url = "http://127.0.0.1:7783",
+	userpass = null,
+	mypubkey = null;
 /*** Setting functions ***/
 function Get_mm_creds() {
 	userpass = sessionStorage.getItem('mm_userpass');
