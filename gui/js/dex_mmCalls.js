@@ -14,44 +14,79 @@ $.ajaxSetup({
 	async: true, dataType: 'json', type: 'POST', url: mm_url, 'timeout': 0
 });
 
+
 /*** AJAX sell call to marketmaker ***/
 function mm_sell(selling_data) {
 	/*** log to electron console that we are making this call to marketmaker ***/
 	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
 	console.warn(new Date().toLocaleTimeString() + " MM_CALL: " + fName);;
 	/*** extract from JSON and use longer words for vars ***/
-	var base_coin = selling_data.base;
-	var rel_coin = selling_data.rel;
-	var selling_volume = selling_data.vol;
-
+	var base_coin = selling_data.base,
+		rel_coin = selling_data.rel,
+		selling_volume = selling_data.vol,
+		ajax_data = null;
 	console.log('Selling BASE: ' + base_coin);
 	console.log('Selling REL: ' + rel_coin);
-
 	/*** Get our account vars ***/
 	Get_mm_creds();
 	/*** What type of sell are we? ***/
 	switch (selling_data.sell_type) {
 		case "dump":
-			var ajax_data = { "userpass": userpass, "method": "sell", "base": base_coin, "rel": rel_coin, "dump": selling_volume };
+			ajax_data = { "userpass": userpass, "method": "sell", "base": base_coin, "rel": rel_coin, "dump": selling_volume };
 			break;
-
 		default:
 			break;
 	}
 	console.log('sell output: ' + JSON.stringify(ajax_data));
 	/*** POST sell to mm ***/
-	//	$.ajax({
-	//		data: JSON.stringify(ajax_data)
-	//	}).done(function (mm_sell_output_data) {
-	//		/*** We get a reply from mm ***/
-	//		if (!mm_sell_output_data.error === false) { /*** Our sell attempt failed ***/
-	//			console.error('sell failed return: ' + JSON.stringify(mm_sell_output_data))
-	//		} else if (mm_sell_output_data.result == 'success') { /*** Our sell offer is posted ***/
-	//			var default_lang = JSON.parse(sessionStorage.getItem('mm_default_lang'));
-	//			console.log('sell success return: ' + JSON.stringify(mm_sell_output_data))
-	//		}
-	//	}).fail(function (jqXHR, textStatus, errorThrown) { console.error(textStatus + ': ' + errorThrown); }); /*** Our whole mm call failed ***/
+	$.ajax({
+		data: JSON.stringify(ajax_data)
+	}).done(function (mm_sell_output_data) {
+		/*** We get a reply from mm ***/
+		if (!mm_sell_output_data.error === false) { /*** Our sell attempt failed ***/
+			console.error('sell failed return: ' + JSON.stringify(mm_sell_output_data))
+		} else if (mm_sell_output_data.result == 'success') { /*** Our sell offer is posted ***/
+			var default_lang = JSON.parse(sessionStorage.getItem('mm_default_lang'));
+			console.log('sell success return: ' + JSON.stringify(mm_sell_output_data))
+		}
+	}).fail(function (jqXHR, textStatus, errorThrown) { console.error(textStatus + ': ' + errorThrown); }); /*** Our whole mm call failed ***/
+}
 
+/*** AJAX buy call to marketmaker ***/
+function mm_buy(buying_data) {
+	/*** log to electron console that we are making this call to marketmaker ***/
+	var fName = arguments.callee.toString().match(/function ([^\(]+)/)[1]
+	console.warn(new Date().toLocaleTimeString() + " MM_CALL: " + fName);;
+	/*** extract from JSON and use longer words for vars ***/
+	var base_coin = buying_data.base,
+		rel_coin = buying_data.rel,
+		buying_volume = buying_data.vol,
+		ajax_data = null;
+	console.log('buying BASE: ' + base_coin);
+	console.log('buying REL: ' + rel_coin);
+	/*** Get our account vars ***/
+	Get_mm_creds();
+	/*** What type of buy are we? ***/
+	switch (buying_data.buy_type) {
+		case "fomo":
+			ajax_data = { "userpass": userpass, "method": "buy", "base": base_coin, "rel": rel_coin, "dump": buying_volume };
+			break;
+		default:
+			break;
+	}
+	console.log('buy output: ' + JSON.stringify(ajax_data));
+	/*** POST buy to mm ***/
+	$.ajax({
+		data: JSON.stringify(ajax_data)
+	}).done(function (mm_buy_output_data) {
+		/*** We get a reply from mm ***/
+		if (!mm_buy_output_data.error === false) { /*** Our buy attempt failed ***/
+			console.error('buy failed return: ' + JSON.stringify(mm_buy_output_data))
+		} else if (mm_buy_output_data.result == 'success') { /*** Our buy offer is posted ***/
+			var default_lang = JSON.parse(sessionStorage.getItem('mm_default_lang'));
+			console.log('buy success return: ' + JSON.stringify(mm_buy_output_data))
+		}
+	}).fail(function (jqXHR, textStatus, errorThrown) { console.error(textStatus + ': ' + errorThrown); }); /*** Our whole mm call failed ***/
 }
 
 /*** Pass debug page content to marketmaker ***/
